@@ -36,6 +36,11 @@ struct ContentView: View {
                             
                             if checkingWin(for: .human, in: moves) {
                                 print ("Human Wins")
+                                return
+                            }
+                            
+                            if checkForDraw(in: moves) {
+                                print ("draw")
                             }
                             
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -46,6 +51,11 @@ struct ContentView: View {
                             
                             if checkingWin(for: .computer, in: moves) {
                                 print ("Computer Wins")
+                                return
+                            }
+                            
+                            if checkForDraw(in: moves) {
+                                print ("draw")
                             }
                             
 //                            moves[i] = Move(player: isHumanTurn ? .human : .computer, boardIndex: i)
@@ -82,6 +92,9 @@ struct ContentView: View {
         return false
     }
     
+    func checkForDraw(in moves: [Move?]) -> Bool {
+        return moves.compactMap { $0 }.count == 9
+    }
     
 }
 
