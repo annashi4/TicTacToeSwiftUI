@@ -7,6 +7,7 @@ struct ContentView: View {
                                GridItem(.flexible())]
     
     @State private var moves: [Move?] = Array (repeating: nil, count: 9)
+    @State private var isGameBoardDisabled = false
 //    @State private var isHumanTurn = true
     
     var body: some View {
@@ -31,10 +32,12 @@ struct ContentView: View {
                         .onTapGesture {
                             if isSquareOccupied(in: moves, forIndex: i) {return}
                             moves[i] = Move(player: .human, boardIndex: i)
+                            isGameBoardDisabled = true
                             
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 let computerPosition = determineComputerMovePosition(in: moves)
                                 moves[computerPosition] = Move(player: .computer, boardIndex: computerPosition)
+                                isGameBoardDisabled = false
                             }
                             
 //                            moves[i] = Move(player: isHumanTurn ? .human : .computer, boardIndex: i)
@@ -44,6 +47,7 @@ struct ContentView: View {
                 }
                 Spacer()
             }
+            .disabled(isGameBoardDisabled)
             .padding()
         }
     }
