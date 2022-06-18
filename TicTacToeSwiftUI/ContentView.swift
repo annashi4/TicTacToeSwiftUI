@@ -8,6 +8,7 @@ struct ContentView: View {
     
     @State private var moves: [Move?] = Array (repeating: nil, count: 9)
     @State private var isGameBoardDisabled = false
+    @State private var alertItem: AlertItem?
 //    @State private var isHumanTurn = true
     
     var body: some View {
@@ -35,12 +36,12 @@ struct ContentView: View {
                             isGameBoardDisabled = true
                             
                             if checkingWin(for: .human, in: moves) {
-                                print ("Human Wins")
+                                alertItem = AlertContext.humanWin
                                 return
                             }
                             
                             if checkForDraw(in: moves) {
-                                print ("draw")
+                                alertItem = AlertContext.draw
                             }
                             
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -50,12 +51,12 @@ struct ContentView: View {
                             }
                             
                             if checkingWin(for: .computer, in: moves) {
-                                print ("Computer Wins")
+                                alertItem = AlertContext.computerWin
                                 return
                             }
                             
                             if checkForDraw(in: moves) {
-                                print ("draw")
+                                alertItem = AlertContext.draw
                             }
                             
 //                            moves[i] = Move(player: isHumanTurn ? .human : .computer, boardIndex: i)
@@ -67,6 +68,11 @@ struct ContentView: View {
             }
             .disabled(isGameBoardDisabled)
             .padding()
+            .alert(item: $alertItem, content:  { alertItem in
+                Alert(title: alertItem.title,
+                      message: alertItem.message,
+                      dismissButton: .default(alertItem.buttonTitle, action: { resetGame() } ))
+            })
         }
     }
     func isSquareOccupied(in moves: [Move?], forIndex index: Int) -> Bool{
@@ -96,6 +102,9 @@ struct ContentView: View {
         return moves.compactMap { $0 }.count == 9
     }
     
+    func resetGame() {
+    return moves = Array (repeating: nil, count: 9)
+    }
 }
 
 
