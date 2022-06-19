@@ -31,8 +31,8 @@ struct GameView: View {
                 Spacer()
             }
             
-            .disabled(viewModel.isGameBoardDisabled)
             .padding()
+            .disabled(viewModel.isGameBoardDisabled)
             .alert(item: $viewModel.alertItem, content:  { alertItem in
                 Alert(title: alertItem.title,
                       message: alertItem.message,

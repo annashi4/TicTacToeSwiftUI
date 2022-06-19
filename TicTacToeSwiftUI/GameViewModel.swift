@@ -27,12 +27,12 @@ final class GameViewModel: ObservableObject{
         
         if checkForDraw(in: moves) {
             alertItem = AlertContext.draw
+            return
         }
         
         isGameBoardDisabled = true
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
-            
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [self] in
             let computerPosition = determineComputerMovePosition(in: moves)
             moves[computerPosition] = Move(player: .computer, boardIndex: computerPosition)
         }
@@ -121,4 +121,5 @@ final class GameViewModel: ObservableObject{
     func resetGame() {
         return moves = Array (repeating: nil, count: 9)
     }
+    
 }
