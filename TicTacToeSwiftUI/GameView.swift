@@ -13,15 +13,15 @@ struct GameView: View {
                     ForEach(0..<9) { i in
                         ZStack {
                             Circle()
-                                .foregroundColor(.mint).opacity(1)
+                                .foregroundColor(.buttonClr).opacity(1)
                                 .frame(width: geometry.size.width/3 - 10,
                                        height: geometry.size.width/3 - 10,
                                        alignment: .center)
                             
-                            Image(systemName: viewModel.moves[i]?.indicator ?? "")
+                            Image(systemName: viewModel.moves[i]?.indicator ?? " ")
                                 .resizable()
                                 .frame(width: 40, height: 40, alignment: .center)
-                                .foregroundColor(.white)
+                                .foregroundColor(.textClr)
                         }
                         .onTapGesture {
                             viewModel.processPlayerMove(for: i)
@@ -31,7 +31,8 @@ struct GameView: View {
                 Spacer()
             }
             
-            .padding()
+            .padding(0.0)
+            .background() {LinearGradient(gradient: Gradient(colors: [Color.topClr, Color.middleClr,Color.bottomClr]),startPoint: .top, endPoint: .bottom)}.ignoresSafeArea()
             .disabled(viewModel.isGameBoardDisabled)
             .alert(item: $viewModel.alertItem, content:  { alertItem in
                 Alert(title: alertItem.title,

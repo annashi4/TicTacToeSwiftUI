@@ -16,7 +16,7 @@ final class GameViewModel: ObservableObject{
     
     func processPlayerMove(for position: Int) {
         
-        if isSquareOccupied(in: moves, forIndex: position) {return}
+        if isSquareOccupied(in: moves, forIndex: position) {return} 
         
         moves[position] = Move(player: .human, boardIndex: position)
         

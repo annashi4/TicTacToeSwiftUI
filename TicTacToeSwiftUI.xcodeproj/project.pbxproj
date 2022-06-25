@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		95191ED6285F2297001E1D24 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95191ED5285F2297001E1D24 /* GameModel.swift */; };
 		951EC12D285EFBCE0046CE4B /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951EC12C285EFBCE0046CE4B /* GameViewModel.swift */; };
+		9573202C286767D300AA7D34 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573202B286767D300AA7D34 /* Extensions.swift */; };
 		95A22F86285E1C1100BBF51A /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A22F85285E1C1100BBF51A /* Alerts.swift */; };
 		95C6175B28528AA200CD6B1A /* TicTacToeSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C6175A28528AA200CD6B1A /* TicTacToeSwiftUIApp.swift */; };
 		95C6175D28528AA200CD6B1A /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C6175C28528AA200CD6B1A /* GameView.swift */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		95191ED5285F2297001E1D24 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		951EC12C285EFBCE0046CE4B /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		9573202B286767D300AA7D34 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		95A22F85285E1C1100BBF51A /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		95C6175728528AA200CD6B1A /* TicTacToeSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToeSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95C6175A28528AA200CD6B1A /* TicTacToeSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeSwiftUIApp.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				95A22F85285E1C1100BBF51A /* Alerts.swift */,
 				95C6175E28528AA500CD6B1A /* Assets.xcassets */,
 				95C6176028528AA500CD6B1A /* Preview Content */,
+				9573202B286767D300AA7D34 /* Extensions.swift */,
 			);
 			path = TicTacToeSwiftUI;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95191ED6285F2297001E1D24 /* GameModel.swift in Sources */,
+				9573202C286767D300AA7D34 /* Extensions.swift in Sources */,
 				951EC12D285EFBCE0046CE4B /* GameViewModel.swift in Sources */,
 				95C6175D28528AA200CD6B1A /* GameView.swift in Sources */,
 				95A22F86285E1C1100BBF51A /* Alerts.swift in Sources */,
