@@ -1,6 +1,5 @@
 import SwiftUI
 import Foundation
-import CoreData
 
 final class GameViewModel: ObservableObject{
     
