@@ -34,8 +34,20 @@ struct GameView: View {
                 .padding(10)
                 .background(.thinMaterial)
                 Spacer()
+                
+                Button (action: viewModel.resetGame){
+                    Text ("Reset")
+                    .fontWeight(.bold)
+                    .font(.title)
+                    .padding()
+                    .background(Color.buttonClr)
+                    .foregroundColor(.white)
+                    .padding(10)
+                    .border(Color.buttonClr, width: 5)}
+                Spacer().frame(height: 50)
+                
+                
             }
-            
             .padding(0.0)
             .background() {LinearGradient(gradient: Gradient(colors: [Color.topClr, Color.bottomClr]),startPoint: .top, endPoint: .bottom)}.ignoresSafeArea()
             .disabled(viewModel.isGameBoardDisabled)
