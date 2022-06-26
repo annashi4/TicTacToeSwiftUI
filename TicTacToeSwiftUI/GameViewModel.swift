@@ -15,7 +15,7 @@ final class GameViewModel: ObservableObject{
     
     func processPlayerMove(for position: Int) {
         
-        if isSquareOccupied(in: moves, forIndex: position) {return} 
+        if isSquareOccupied(in: moves, forIndex: position) {return}
         
         moves[position] = Move(player: .human, boardIndex: position)
         
@@ -31,23 +31,22 @@ final class GameViewModel: ObservableObject{
         
         isGameBoardDisabled = true
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [self] in
             let computerPosition = determineComputerMovePosition(in: moves)
             moves[computerPosition] = Move(player: .computer, boardIndex: computerPosition)
+            
+            isGameBoardDisabled = false
+            
+            if checkingWin(for: .computer, in: moves) {
+                alertItem = AlertContext.computerWin
+                return
+            }
+            
+            if checkForDraw(in: moves) {
+                alertItem = AlertContext.draw
+                return
+            }
         }
-        
-        isGameBoardDisabled = false
-        
-        if checkingWin(for: .computer, in: moves) {
-            alertItem = AlertContext.computerWin
-            return
-        }
-        
-        if checkForDraw(in: moves) {
-            alertItem = AlertContext.draw
-            return
-        }
-        
         //                            moves[i] = Move(player: isHumanTurn ? .human : .computer, boardIndex: i)
         //                            isHumanTurn.toggle()
     }
@@ -90,7 +89,7 @@ final class GameViewModel: ObservableObject{
             return centerSquare
             
         }
-        //
+        
         var movePosition = Int.random(in: 0..<9)
         
         while isSquareOccupied(in: moves, forIndex: movePosition) {
@@ -107,7 +106,6 @@ final class GameViewModel: ObservableObject{
         
         for pattern in winPatterns where pattern.isSubset(of: playerPositions) {
             return true
-            
         }
         
         return false
