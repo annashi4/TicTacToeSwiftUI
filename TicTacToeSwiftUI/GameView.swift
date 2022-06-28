@@ -34,6 +34,7 @@ struct GameView: View {
                 .padding(10)
                 .background(.thinMaterial)
                 Spacer()
+                    .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                 
                 Button (action: viewModel.resetGame){
                     Text ("Reset")
