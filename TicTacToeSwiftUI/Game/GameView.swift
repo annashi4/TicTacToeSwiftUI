@@ -2,41 +2,45 @@ import SwiftUI
 
 struct GameView: View {
     
-    @StateObject private var viewModel = GameViewModel()
+    @StateObject private var gameViewModel = GameViewModel()
     
     var body: some View {
         
         GeometryReader{ geometry in
+            
             VStack{
+                
                 Spacer()
                 
-                LazyVGrid(columns: viewModel.columns, spacing: 5) {
+                LazyVGrid(columns: gameViewModel.columns, spacing: 5) {
                     ForEach(0..<9) { i in
+                        
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
                                 .foregroundColor(.buttonClr).opacity(1)
                                 .frame(width: geometry.size.width/3 - 10,
                                        height: geometry.size.width/3 - 10,
                                        alignment: .center)
-                            
-                            
-                            Image(systemName: viewModel.moves[i]?.indicator ?? " ")
+                            Image(systemName: gameViewModel.moves[i]?.indicator ?? " ")
                                 .resizable()
                                 .frame(width: 40, height: 40, alignment: .center)
                                 .foregroundColor(.textClr)
                         }
+                        
                         .onTapGesture {
-                            viewModel.processPlayerMove(for: i)
+                            gameViewModel.processPlayerMove(for: i)
                         }
+                        
                     }
                 }
+                
                 .frame(maxWidth: .infinity)
                 .padding(10)
                 .background(.thinMaterial)
                 Spacer()
                     .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                 
-                Button (action: viewModel.resetGame){
+                Button (action: gameViewModel.resetGame){
                     Text ("Reset")
                     .fontWeight(.bold)
                     .font(.title)
@@ -46,16 +50,16 @@ struct GameView: View {
                     .padding(10)
                     .border(Color.buttonClr, width: 5)}
                 Spacer().frame(height: 50)
-                
-                
             }
+   
+            
             .padding(0.0)
             .background() {LinearGradient(gradient: Gradient(colors: [Color.topClr, Color.bottomClr]),startPoint: .top, endPoint: .bottom)}.ignoresSafeArea()
-            .disabled(viewModel.isGameBoardDisabled)
-            .alert(item: $viewModel.alertItem, content:  { alertItem in
+            .disabled(gameViewModel.isGameBoardDisabled)
+            .alert(item: $gameViewModel.alertItem, content:  { alertItem in
                 Alert(title: alertItem.title,
                       message: alertItem.message,
-                      dismissButton: .default(alertItem.buttonTitle, action: { viewModel.resetGame() } ))
+                      dismissButton: .default(alertItem.buttonTitle, action: { gameViewModel.resetGame() } ))
             })
         }
     }

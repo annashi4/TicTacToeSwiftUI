@@ -11,7 +11,6 @@ final class GameViewModel: ObservableObject{
     @Published var moves: [Move?] = Array (repeating: nil, count: 9)
     @Published var isGameBoardDisabled = false
     @Published var alertItem: AlertItem?
-    //    @Published var isHumanTurn = true
     
     func processPlayerMove(for position: Int) {
         
@@ -47,8 +46,6 @@ final class GameViewModel: ObservableObject{
                 return
             }
         }
-        //                            moves[i] = Move(player: isHumanTurn ? .human : .computer, boardIndex: i)
-        //                            isHumanTurn.toggle()
     }
     
     func isSquareOccupied(in moves: [Move?], forIndex index: Int) -> Bool{

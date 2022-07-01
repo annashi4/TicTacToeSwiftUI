@@ -7,5 +7,3 @@ extension Color {
     static let buttonClr = Color(red: 56/255, green: 165/255, blue: 235/255)
     static let textClr = Color(red: 242/255, green: 242/255, blue: 242/255)
 }
-
-
